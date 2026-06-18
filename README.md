@@ -36,7 +36,7 @@ A CSV analysis tool using LangGraph multi-agent pipeline for automated data prof
 
 ### Investment Analyzer (asset-lens)
 
-When the input CSV is an asset-lens output (`投资收益率分析_*.csv`), the Investment Analyzer automatically:
+When the input CSV is an asset-lens output (e.g. `investment_return_analysis_*.csv`), the Investment Analyzer automatically:
 
 - **Detects** asset-lens format by column keywords (return rate, IRR, annualized, etc.)
 - **Calculates** return distribution (loss / 0-2% / 2-5% / 5-10% / 10-20% / 20%+)
@@ -163,6 +163,7 @@ class AnalysisState(TypedDict, total=False):
     profile: dict              # Full data profile
     trends: dict               # Trend analysis results
     anomalies: dict            # Anomaly detection results
+    investment_analysis: dict  # Investment portfolio analysis
     report: str                # Generated HTML report
     errors: list[str]          # Collected errors
 ```
