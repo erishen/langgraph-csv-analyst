@@ -38,8 +38,8 @@ A CSV analysis tool using LangGraph multi-agent pipeline for automated data prof
 
 When the input CSV is an asset-lens output (`投资收益率分析_*.csv`), the Investment Analyzer automatically:
 
-- **Detects** asset-lens format by column keywords (收益率, IRR, 年化, etc.)
-- **Calculates** return distribution (亏损/0-2%/2-5%/5-10%/10-20%/20%+)
+- **Detects** asset-lens format by column keywords (return rate, IRR, annualized, etc.)
+- **Calculates** return distribution (loss / 0-2% / 2-5% / 5-10% / 10-20% / 20%+)
 - **Assesses** portfolio risk (low return, negative return products)
 - **Generates** LLM-powered insights (health assessment, rebalancing suggestions)
 - **Visualizes** return distribution pie chart, return stats bar chart, risk assessment chart
@@ -54,7 +54,7 @@ langgraph-csv-analyst/
 │   ├── csv_parser.py        # CSV parsing and profiling
 │   ├── agents.py            # Multi-agent definitions
 │   ├── graph.py             # LangGraph state graph
-│   ├── visualization.py     # Plotly chart generation
+│   ├── visualization.py     # Plotly chart generation + HTML report
 │   ├── api.py               # FastAPI service
 │   └── cli.py               # CLI (Typer)
 ├── tests/
@@ -151,6 +151,7 @@ The analysis pipeline is built as a LangGraph `StateGraph` with the following fl
 3. **Parallel Execution**:
    - **trend_analyzer** - Analyze trends and patterns using LLM
    - **anomaly_detector** - Detect outliers using IQR method + LLM analysis
+   - **investment_analyzer** - Analyze investment portfolio (asset-lens format)
 4. **generate_report** - Compile all results into an HTML report
 
 The `AnalysisState` TypedDict tracks:
