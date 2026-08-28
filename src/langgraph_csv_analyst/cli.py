@@ -52,9 +52,7 @@ def analyze(
 
     report = result.get("report", "")
     if report:
-        output_path = output or str(csv_file.with_suffix(".html")).replace(
-            csv_file.stem, f"{csv_file.stem}_report"
-        )
+        output_path = output or str(csv_file.with_suffix(".html")).replace(csv_file.stem, f"{csv_file.stem}_report")
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(report)
         console.print(f"\n[bold green]Report saved to: {output_path}[/bold green]")

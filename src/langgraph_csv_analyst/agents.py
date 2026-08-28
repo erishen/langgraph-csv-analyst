@@ -68,7 +68,9 @@ def trend_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
 
         columns_summary = []
         for col in profile.get("columns", []):
-            col_desc = f"- {col['name']} ({col['dtype']}): {col['null_count']} nulls, {col['unique_count']} unique values"
+            col_desc = (
+                f"- {col['name']} ({col['dtype']}): {col['null_count']} nulls, {col['unique_count']} unique values"
+            )
             if "stats" in col and "mean" in col["stats"]:
                 col_desc += f", mean={col['stats']['mean']}, std={col['stats']['std']}"
             columns_summary.append(col_desc)
@@ -91,15 +93,9 @@ def trend_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
         response = llm.invoke(prompt)
         trends = {
             "analysis": response.content,
-            "numeric_columns": [
-                col["name"]
-                for col in profile.get("columns", [])
-                if "mean" in col.get("stats", {})
-            ],
+            "numeric_columns": [col["name"] for col in profile.get("columns", []) if "mean" in col.get("stats", {})],
             "categorical_columns": [
-                col["name"]
-                for col in profile.get("columns", [])
-                if "top_values" in col.get("stats", {})
+                col["name"] for col in profile.get("columns", []) if "top_values" in col.get("stats", {})
             ],
         }
 
@@ -197,7 +193,9 @@ def report_generator_agent(state: dict[str, Any]) -> dict[str, Any]:
                 "return_distribution": investment_analysis.get("return_distribution", {}),
                 "risk_assessment": investment_analysis.get("risk_assessment", {}),
                 "amount_stats": investment_analysis.get("amount_stats", {}),
-            } if investment_analysis.get("source") == "asset-lens" else {},
+            }
+            if investment_analysis.get("source") == "asset-lens"
+            else {},
         }
 
         html_report = generate_html_report(all_charts, metadata)
@@ -279,12 +277,8 @@ def investment_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
             analysis["risk_assessment"] = {
                 "low_return_count": len(low_return_products),
                 "negative_return_count": len(negative_products),
-                "low_return_products": (
-                    low_return_products[name_col].tolist()[:10] if name_col else []
-                ),
-                "negative_return_products": (
-                    negative_products[name_col].tolist()[:10] if name_col else []
-                ),
+                "low_return_products": (low_return_products[name_col].tolist()[:10] if name_col else []),
+                "negative_return_products": (negative_products[name_col].tolist()[:10] if name_col else []),
             }
 
         # Find amount column

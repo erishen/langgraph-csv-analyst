@@ -273,9 +273,7 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
     chart_html_parts = []
     for fig in all_charts:
         chart_html_parts.append(
-            f'<div class="chart-container">\n'
-            f"  {fig.to_html(full_html=False, include_plotlyjs=False)}\n"
-            f"</div>"
+            f'<div class="chart-container">\n  {fig.to_html(full_html=False, include_plotlyjs=False)}\n</div>'
         )
 
     charts_html = "\n".join(chart_html_parts)
@@ -310,19 +308,19 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
             stats_cards += f"""
             <div class="stats-grid">
                 <div class="stat-card stat-blue">
-                    <div class="stat-value">{return_stats.get('mean', 0)}%</div>
+                    <div class="stat-value">{return_stats.get("mean", 0)}%</div>
                     <div class="stat-label">平均收益率</div>
                 </div>
                 <div class="stat-card stat-green">
-                    <div class="stat-value">{return_stats.get('median', 0)}%</div>
+                    <div class="stat-value">{return_stats.get("median", 0)}%</div>
                     <div class="stat-label">中位数收益率</div>
                 </div>
                 <div class="stat-card stat-purple">
-                    <div class="stat-value">{return_stats.get('max', 0)}%</div>
+                    <div class="stat-value">{return_stats.get("max", 0)}%</div>
                     <div class="stat-label">最高收益率</div>
                 </div>
                 <div class="stat-card stat-red">
-                    <div class="stat-value">{return_stats.get('min', 0)}%</div>
+                    <div class="stat-value">{return_stats.get("min", 0)}%</div>
                     <div class="stat-label">最低收益率</div>
                 </div>
             </div>"""
@@ -332,11 +330,11 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
             stats_cards += f"""
             <div class="stats-grid">
                 <div class="stat-card stat-blue">
-                    <div class="stat-value">¥{amount_stats.get('total', 0):,.0f}</div>
+                    <div class="stat-value">¥{amount_stats.get("total", 0):,.0f}</div>
                     <div class="stat-label">持仓总额</div>
                 </div>
                 <div class="stat-card stat-green">
-                    <div class="stat-value">¥{amount_stats.get('mean', 0):,.0f}</div>
+                    <div class="stat-value">¥{amount_stats.get("mean", 0):,.0f}</div>
                     <div class="stat-label">平均持仓</div>
                 </div>
             </div>"""
@@ -349,12 +347,12 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
             if negative_products:
                 risk_warnings += f"""
                 <div class="risk-item risk-negative">
-                    <strong>亏损产品 ({len(negative_products)}个):</strong> {', '.join(str(p) for p in negative_products)}
+                    <strong>亏损产品 ({len(negative_products)}个):</strong> {", ".join(str(p) for p in negative_products)}
                 </div>"""
             if low_return_products:
                 risk_warnings += f"""
                 <div class="risk-item risk-low">
-                    <strong>低收益产品 ({risk_assessment.get('low_return_count', 0)}个):</strong> 收益率低于2%
+                    <strong>低收益产品 ({risk_assessment.get("low_return_count", 0)}个):</strong> 收益率低于2%
                 </div>"""
             if risk_warnings:
                 stats_cards += f"""
@@ -380,7 +378,7 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV 分析报告 - {metadata.get('csv_path', 'Unknown')}</title>
+    <title>CSV 分析报告 - {metadata.get("csv_path", "Unknown")}</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -522,19 +520,19 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
 <body>
     <div class="header">
         <h1>CSV 分析报告</h1>
-        <p>{metadata.get('csv_path', 'Unknown')}</p>
+        <p>{metadata.get("csv_path", "Unknown")}</p>
     </div>
     <div class="metadata">
         <div class="metadata-item">
-            <div class="value">{metadata.get('total_rows', 0):,}</div>
+            <div class="value">{metadata.get("total_rows", 0):,}</div>
             <div class="label">数据行数</div>
         </div>
         <div class="metadata-item">
-            <div class="value">{metadata.get('total_columns', 0)}</div>
+            <div class="value">{metadata.get("total_columns", 0)}</div>
             <div class="label">字段数</div>
         </div>
         <div class="metadata-item">
-            <div class="value">{metadata.get('total_anomalies', 0)}</div>
+            <div class="value">{metadata.get("total_anomalies", 0)}</div>
             <div class="label">异常值</div>
         </div>
     </div>

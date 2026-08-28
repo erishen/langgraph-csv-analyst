@@ -29,10 +29,7 @@ def load_csv(file_path: str | Path) -> pd.DataFrame:
 
     file_size_mb = path.stat().st_size / (1024 * 1024)
     if file_size_mb > settings.CSV_MAX_SIZE_MB:
-        raise ValueError(
-            f"File size ({file_size_mb:.1f} MB) exceeds limit "
-            f"({settings.CSV_MAX_SIZE_MB} MB)"
-        )
+        raise ValueError(f"File size ({file_size_mb:.1f} MB) exceeds limit ({settings.CSV_MAX_SIZE_MB} MB)")
 
     encoding = _detect_encoding(path)
 

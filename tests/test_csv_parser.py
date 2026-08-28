@@ -19,12 +19,14 @@ from langgraph_csv_analyst.csv_parser import (
 @pytest.fixture
 def sample_csv() -> str:
     """Create a temporary CSV file for testing."""
-    data = pd.DataFrame({
-        "name": ["Alice", "Bob", "Charlie", "David", "Eve"],
-        "age": [25, 30, 35, 40, 100],
-        "score": [85.5, 90.0, 78.3, 92.1, 88.7],
-        "city": ["NYC", "LA", "NYC", "Chicago", "LA"],
-    })
+    data = pd.DataFrame(
+        {
+            "name": ["Alice", "Bob", "Charlie", "David", "Eve"],
+            "age": [25, 30, 35, 40, 100],
+            "score": [85.5, 90.0, 78.3, 92.1, 88.7],
+            "city": ["NYC", "LA", "NYC", "Chicago", "LA"],
+        }
+    )
     tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False)
     data.to_csv(tmp.name, index=False)
     tmp.close()
@@ -35,11 +37,13 @@ def sample_csv() -> str:
 @pytest.fixture
 def csv_with_nulls() -> str:
     """Create a CSV file with null values."""
-    data = pd.DataFrame({
-        "col_a": [1, 2, None, 4, 5],
-        "col_b": ["x", None, "z", "w", None],
-        "col_c": [10.0, 20.0, 30.0, None, 50.0],
-    })
+    data = pd.DataFrame(
+        {
+            "col_a": [1, 2, None, 4, 5],
+            "col_b": ["x", None, "z", "w", None],
+            "col_c": [10.0, 20.0, 30.0, None, 50.0],
+        }
+    )
     tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False)
     data.to_csv(tmp.name, index=False)
     tmp.close()
