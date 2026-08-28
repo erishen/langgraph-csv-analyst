@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from typing import Any
 
 from langchain_core.language_models import BaseChatModel
@@ -48,7 +47,7 @@ def data_profiler_agent(state: dict[str, Any]) -> dict[str, Any]:
             "profile": profile,
         }
     except Exception as e:
-        return {"errors": [f"DataProfilerAgent error: {str(e)}"]}
+        return {"errors": [f"DataProfilerAgent error: {e!s}"]}
 
 
 def trend_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
@@ -106,7 +105,7 @@ def trend_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
 
         return {"trends": trends}
     except Exception as e:
-        return {"errors": [f"TrendAnalyzerAgent error: {str(e)}"]}
+        return {"errors": [f"TrendAnalyzerAgent error: {e!s}"]}
 
 
 def anomaly_detector_agent(state: dict[str, Any]) -> dict[str, Any]:
@@ -153,7 +152,7 @@ def anomaly_detector_agent(state: dict[str, Any]) -> dict[str, Any]:
 
         return {"anomalies": anomalies}
     except Exception as e:
-        return {"errors": [f"AnomalyDetectorAgent error: {str(e)}"]}
+        return {"errors": [f"AnomalyDetectorAgent error: {e!s}"]}
 
 
 def report_generator_agent(state: dict[str, Any]) -> dict[str, Any]:
@@ -167,11 +166,11 @@ def report_generator_agent(state: dict[str, Any]) -> dict[str, Any]:
     """
     try:
         from langgraph_csv_analyst.visualization import (
-            generate_html_report,
             create_anomaly_charts,
             create_investment_charts,
             create_profile_charts,
             create_trend_charts,
+            generate_html_report,
         )
 
         profile = state.get("profile", {})
@@ -205,7 +204,7 @@ def report_generator_agent(state: dict[str, Any]) -> dict[str, Any]:
 
         return {"report": html_report}
     except Exception as e:
-        return {"errors": [f"ReportGeneratorAgent error: {str(e)}"]}
+        return {"errors": [f"ReportGeneratorAgent error: {e!s}"]}
 
 
 def investment_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
@@ -223,7 +222,6 @@ def investment_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
     """
     try:
         csv_path = state.get("csv_path")
-        profile = state.get("profile", {})
         if not csv_path:
             return {"errors": ["No CSV path provided for investment analysis"]}
 
@@ -323,7 +321,7 @@ def investment_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
 
         return {"investment_analysis": analysis}
     except Exception as e:
-        return {"errors": [f"InvestmentAnalyzerAgent error: {str(e)}"]}
+        return {"errors": [f"InvestmentAnalyzerAgent error: {e!s}"]}
 
 
 def error_handler_node(state: dict[str, Any]) -> dict[str, Any]:

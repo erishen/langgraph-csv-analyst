@@ -14,7 +14,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from langgraph_csv_analyst.config import settings
-from langgraph_csv_analyst.csv_parser import get_profile, get_summary, load_csv
 from langgraph_csv_analyst.graph import run_analysis
 
 app = FastAPI(

@@ -5,7 +5,6 @@ from __future__ import annotations
 from typing import Annotated, Any, TypedDict
 
 from langgraph.graph import END, StateGraph
-from langgraph.graph.message import add_messages
 
 from langgraph_csv_analyst.agents import (
     anomaly_detector_agent,
@@ -56,7 +55,7 @@ def load_csv_node(state: AnalysisState) -> dict[str, Any]:
             },
         }
     except Exception as e:
-        return {"errors": [f"Failed to load CSV: {str(e)}"]}
+        return {"errors": [f"Failed to load CSV: {e!s}"]}
 
 
 def profile_node(state: AnalysisState) -> dict[str, Any]:

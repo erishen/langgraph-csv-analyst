@@ -271,7 +271,7 @@ def generate_html_report(all_charts: list[go.Figure], metadata: dict[str, Any]) 
         A complete HTML string.
     """
     chart_html_parts = []
-    for i, fig in enumerate(all_charts):
+    for fig in all_charts:
         chart_html_parts.append(
             f'<div class="chart-container">\n'
             f"  {fig.to_html(full_html=False, include_plotlyjs=False)}\n"

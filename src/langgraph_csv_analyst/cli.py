@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
-from typing import Optional
 
 import typer
 from rich.console import Console
@@ -27,7 +25,7 @@ console = Console()
 @app.command()
 def analyze(
     csv_path: str = typer.Argument(..., help="Path to the CSV file to analyze"),
-    output: Optional[str] = typer.Option(
+    output: str | None = typer.Option(
         None, "--output", "-o", help="Output HTML report path (default: <csv_name>_report.html)"
     ),
 ) -> None:
@@ -37,7 +35,7 @@ def analyze(
         console.print(f"[red]Error: File not found: {csv_path}[/red]")
         raise typer.Exit(code=1)
 
-    if not csv_file.suffix.lower() == ".csv":
+    if csv_file.suffix.lower() != ".csv":
         console.print(f"[red]Error: File must be a CSV: {csv_path}[/red]")
         raise typer.Exit(code=1)
 
