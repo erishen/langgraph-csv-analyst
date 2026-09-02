@@ -231,7 +231,9 @@ def investment_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
         is_asset_lens = any(any(kw in col for kw in asset_lens_keywords) for col in columns)
 
         if not is_asset_lens:
-            return {"investment_analysis": None}
+            # Non-investment CSV: keep investment_analysis an empty dict so
+            # downstream report generation can safely .get() on it (None crashes).
+            return {"investment_analysis": {}}
 
         # Extract investment-specific metrics
         analysis: dict[str, Any] = {
