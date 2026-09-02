@@ -1,0 +1,23 @@
+date,category,product,quantity,price,amount,region,salesperson
+2026-01-02,Electronics,Wireless Mouse,12,49.5,594.0,North,Alice
+2026-01-03,Electronics,Mini Speaker,8,79.0,632.0,South,Bob
+2026-01-05,Office,Desk Lamp,15,35.0,525.0,North,Alice
+2026-01-05,Office,Desk Lamp,4,35.0,140.0,East,Carol
+2026-01-06,Electronics,USB Hub,20,28.5,570.0,West,Dan
+2026-01-08,Kitchen,Coffee Maker,6,119.0,714.0,South,Bob
+2026-01-09,Office,Desk Lamp,3,35.0,105.0,West,Dan
+2026-01-10,Electronics,Wireless Mouse,25,49.5,1237.5,South,Bob
+2026-01-12,Kitchen,Blender,9,89.0,801.0,North,Alice
+2026-01-13,Electronics,Mini Speaker,14,79.0,1106.0,East,Carol
+2026-01-15,Office,Stapler,30,12.0,360.0,West,Dan
+2026-01-16,Kitchen,Coffee Maker,11,119.0,1309.0,East,Carol
+2026-01-17,Electronics,USB Hub,18,28.5,513.0,South,Bob
+2026-01-19,Office,Desk Lamp,22,35.0,770.0,North,Alice
+2026-01-20,Electronics,Wireless Mouse,16,49.5,792.0,East,Carol
+2026-01-22,Kitchen,Blender,7,89.0,623.0,West,Dan
+2026-01-23,Electronics,USB Hub,40,28.5,1140.0,South,Bob
+2026-01-24,Office,Stapler,12,12.0,144.0,North,Alice
+2026-01-26,Electronics,Mini Speaker,20,79.0,1580.0,West,Dan
+2026-01-27,Kitchen,Coffee Maker,5,119.0,595.0,East,Carol
+2026-01-29,Electronics,Wireless Mouse,30,49.5,1485.0,North,Alice
+2026-01-30,Office,Desk Lamp,10,35.0,350.0,South,Bob
