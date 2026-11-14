@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
-license = { text = "MIT" }
+license = "MIT"
 keywords = ["langgraph", "csv", "analysis", "multi-agent", "data"]
 classifiers = [
     "Development Status :: 4 - Beta",
